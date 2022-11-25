@@ -4,8 +4,12 @@
 <AuthorizeView Roles="Administrador">
     <Authorized Context="AuthenticationState">
         <h2>Lista de Usuarios</h2>
-
-        @if(lista==null)
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <a href="/Usuarios/Nuevo" class="btn btn-primary m-1">Nuevo Usuario</a>
+            </div>
+        </div>
+        @if (lista == null)
         {
             <p>No existen usuarios en el sistema</p>
         }
@@ -22,9 +26,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach(Usuario user in lista)
+                    @foreach (Usuario user in lista)
                     {
-                        @if (user.Rol=="Administrador")
+                        @if (user.Rol == "Administrador")
                         {
                             <tr style="background-color:beige">
                                 <td>@user.Codigo</td>
@@ -43,10 +47,13 @@
                                         <span class="oi oi-circle-check" style="color:red;"></span>
                                     </td>
                                 }
-
+                                <td>
+                                    <a class="btn btn-success" href="@($"/Usuarios/Editar/{user.Codigo}")">Editar</a>
+                                </td>
                             </tr>
                         }
-                        else{
+                        else
+                        {
                             <tr>
                                 <td>@user.Codigo</td>
                                 <td>@user.Nombre</td>
@@ -64,14 +71,15 @@
                                         <span class="oi oi-circle-check" style="color:red;"></span>
                                     </td>
                                 }
-
+                                <td>
+                                    <a class="btn btn-success" href="@($"/Usuarios/Editar/{user.Codigo}")">Editar</a>
+                                </td>
                             </tr>
                         }
-                        
+
                     }
                 </tbody>
             </table>
         }
     </Authorized>
 </AuthorizeView>
-

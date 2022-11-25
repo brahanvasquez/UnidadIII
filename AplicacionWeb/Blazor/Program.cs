@@ -1,7 +1,8 @@
-
+using System.Threading.Tasks;
 using Blazor;
 using Blazor.Interfaces;
 using Blazor.Servicios;
+using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -17,7 +18,10 @@ builder.Services.AddSingleton(cadenaConexion);
 
 builder.Services.AddScoped<ILoginServicio, LoginServicio>();
 builder.Services.AddScoped<IUsuarioServicio, UsuarioServicio>();
+builder.Services.AddScoped<IProductoServicio, ProductoServicio>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
+builder.Services.AddSweetAlert2();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
